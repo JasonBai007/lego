@@ -1,26 +1,40 @@
 <template>
   <div class="center-area">
-    <draggable tag="ul" v-model="comList" group="common" chosenClass="active" animation="200">
-      <li v-for="com in comList" :key="com.order">
-        {{ com.name }}
-      </li>
-    </draggable>
+    <!-- 表单     -->
+    <el-form :size="formConfig.form.size" :label-position="formConfig.form.labelPosition" :label-width="formConfig.form.labelWidth + 'px'">
+      <!-- 可拖动区域 -->
+      <drag-section class="drag-section" v-model="formConfig.list" group="common" chosenClass="active" animation="200">
+        <!-- 循环item -->
+        <div v-for="(item, i) in formConfig.list" :key="i" class="formItem">
+          <!-- 构造每一个不同的表单元素 -->
+          <form-item :data="item" />
+        </div>
+      </drag-section>
+    </el-form>
   </div>
 </template>
 
 <script>
-import Draggable from "vuedraggable";
-const coms = ["vue.draggable", "draggable", "component", "for", "vue.js 2.0", "based", "on", "Sortablejs"];
+import DragSection from "vuedraggable";
+import FormItem from "./FormItem.vue";
 export default {
   name: "centerCanvas",
   components: {
-    Draggable,
+    DragSection,
+    FormItem,
   },
   data() {
     return {
-      comList: coms.map((name, index) => {
-        return { name, order: index + 1 };
-      }),
+      formConfig: {
+        // 拖拽区el-form属性
+        form: {
+          labelWidth: 100,
+          labelPosition: "right",
+          size: "small",
+        },
+        // 拖拽区接收到的组件
+        list: [],
+      },
     };
   },
   computed: {},
@@ -32,18 +46,8 @@ export default {
 
 <style lang="scss" scoped>
 .center-area {
-  ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    li {
-      cursor: move;
-      height: 30px;
-      line-height: 30px;
-      border: 1px solid #ccc;
-      padding: 5px 0 5px 15px;
-      margin-bottom: 5px;
-    }
+  .drag-section {
+    min-height: 200px;
   }
 }
 </style>
