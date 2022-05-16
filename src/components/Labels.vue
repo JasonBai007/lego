@@ -19,9 +19,34 @@ export default {
   },
   data() {
     return {
-      labelList: labels.map((name, index) => {
-        return { name, order: index + 10 };
-      }),
+      labelList: [
+        {
+          name: "Container",
+          type: "layout",
+          order: Date.now(),
+          options: {
+            layout: [24],
+          },
+        },
+        {
+          name: "Input",
+          type: "input",
+          order: Date.now(),
+          options: {
+            label: "标签",
+            placeholder: "请输入",
+          },
+        },
+        {
+          name: "Button",
+          type: "button",
+          order: Date.now(),
+          options: {
+            label: "按钮",
+            icon: "",
+          },
+        },
+      ],
     };
   },
   computed: {},
