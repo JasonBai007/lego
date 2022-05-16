@@ -15,5 +15,5 @@ npm run serve
 npm run build
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Docs
+See [Vue.Draggable使用文档总结](https://juejin.cn/post/6844904150350692366)
