@@ -27,10 +27,9 @@ export default {
   & > section {
     box-sizing: border-box;
     height: 100vh;
-    padding: 20px;
+    padding: 15px;
   }
   .main {
-    width: auto;
     flex-grow: 1;
   }
   .right {
