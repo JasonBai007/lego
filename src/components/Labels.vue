@@ -1,7 +1,8 @@
 <template>
   <div class="labes">
     <!-- 配置项：自身不能排序，不能放置拖拽元素，拖拽时克隆 -->
-    <drag-section tag="ul" v-model="labelList" :group="{ name: 'common', pull: 'clone', put: false }" :sort="false">
+    <!-- 重点一：必须:clone，不能是@clone -->
+    <drag-section tag="ul" v-model="labelList" :group="{ name: 'common', pull: 'clone', put: false }" :sort="false" :clone="cloneCur">
       <li v-for="(label, i) in labelList" :key="i">
         {{ label.name }}
       </li>
@@ -52,7 +53,12 @@ export default {
   },
   computed: {},
   mounted() {},
-  methods: {},
+  methods: {
+    cloneCur(item) {
+      // 重点二：必须返回一个全新的对象
+      return JSON.parse(JSON.stringify(item));
+    },
+  },
   watch: {},
 };
 </script>

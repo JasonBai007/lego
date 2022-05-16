@@ -5,7 +5,7 @@
       <!-- 可拖动区域 -->
       <drag-section class="drag-section" v-model="formConfig.list" group="common" chosenClass="active" animation="200">
         <!-- 循环item -->
-        <div v-for="(item, i) in formConfig.list" :key="i" class="formItem">
+        <div v-for="(item, i) in formConfig.list" :key="i" class="formItem" @click="selectOne(item)">
           <!-- 构造每一个不同的表单元素 -->
           <form-item :item="item" />
         </div>
@@ -39,7 +39,11 @@ export default {
   },
   computed: {},
   mounted() {},
-  methods: {},
+  methods: {
+    selectOne(item) {
+      item.options.label = "asdfdf";
+    },
+  },
   watch: {},
 };
 </script>
