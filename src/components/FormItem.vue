@@ -1,7 +1,10 @@
 <template>
-  <div class="item">
-    <template v-if="data.type === 'button'">
-      <el-button>按钮</el-button>
+  <div class="oneItem">
+    <!-- 如果类型是按钮 -->
+    <template v-if="item.type === 'button'">
+      <el-form-item>
+        <el-button :type="item.options.type" :icon="item.options.icon">{{ item.options.label }}</el-button>
+      </el-form-item>
     </template>
   </div>
 </template>
@@ -9,7 +12,7 @@
 <script>
 export default {
   name: "formItem",
-  props: ["data"],
+  props: ["item"],
   data() {
     return {};
   },
@@ -21,6 +24,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.item {
+.oneItem {
 }
 </style>

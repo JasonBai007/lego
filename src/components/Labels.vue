@@ -44,6 +44,7 @@ export default {
           options: {
             label: "按钮",
             icon: "",
+            type: "primary",
           },
         },
       ],
@@ -74,6 +75,7 @@ export default {
       align-items: center;
       border: 1px solid #aaa;
       &:hover {
+        border-color: #16a085;
         cursor: move;
       }
     }

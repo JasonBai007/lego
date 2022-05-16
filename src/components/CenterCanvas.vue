@@ -7,7 +7,7 @@
         <!-- 循环item -->
         <div v-for="(item, i) in formConfig.list" :key="i" class="formItem">
           <!-- 构造每一个不同的表单元素 -->
-          <form-item :data="item" />
+          <form-item :item="item" />
         </div>
       </drag-section>
     </el-form>
@@ -29,7 +29,7 @@ export default {
         // 拖拽区el-form属性
         form: {
           labelWidth: 100,
-          labelPosition: "right",
+          labelPosition: "top",
           size: "small",
         },
         // 拖拽区接收到的组件
