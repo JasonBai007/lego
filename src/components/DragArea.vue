@@ -1,41 +1,26 @@
 <template>
   <div class="drag-area">
-    <div class="left">left</div>
+    <div class="left">
+      <labels></labels>
+    </div>
     <div class="right">
-      <draggable
-        class="list-group"
-        tag="ul"
-        v-model="list"
-        v-bind="{
-          animation: 200,
-          group: 'description',
-          disabled: false,
-          ghostClass: 'ghost',
-        }"
-      >
-        <li class="list-group-item" v-for="element in list" :key="element.order">
-          {{ element.name }}
-        </li>
-      </draggable>
+      <center-canvas></center-canvas>
     </div>
   </div>
 </template>
 
 <script>
-import Draggable from "vuedraggable";
+import Labels from "./Labels.vue";
+import CenterCanvas from "./CenterCanvas.vue";
 
-const message = ["vue.draggable", "draggable", "component", "for", "vue.js 2.0", "based", "on", "Sortablejs"];
 export default {
   name: "dragArea",
   components: {
-    Draggable,
+    Labels,
+    CenterCanvas,
   },
   data() {
-    return {
-      list: message.map((name, index) => {
-        return { name, order: index + 1 };
-      }),
-    };
+    return {};
   },
   computed: {},
   mounted() {},
@@ -49,6 +34,7 @@ export default {
   display: flex;
   height: 100%;
   & > div {
+    background: #fff;
     padding: 10px;
     border: 1px solid #ccc;
   }
@@ -58,20 +44,7 @@ export default {
   }
   .right {
     flex-grow: 1;
+    padding: 20px;
   }
-}
-.ghost {
-  opacity: 0.5;
-  background: #c8ebfb;
-}
-.list-group {
-  min-height: 20px;
-  list-style: none;
-}
-.list-group-item {
-  cursor: move;
-  height: 30px;
-  line-height: 30px;
-  border: 1px solid #ccc;
 }
 </style>

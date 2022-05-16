@@ -31,6 +31,7 @@ export default {
   }
   .main {
     flex-grow: 1;
+    background: #efefef;
   }
   .right {
     width: 300px;
