@@ -39,6 +39,7 @@ export default {
   computed: {},
   mounted() {
     this.$bus.$on("setCurItem", (item) => {
+      // 这里传递的实际上是引用，是指针，牵线搭桥
       this.curItem = item;
     });
   },

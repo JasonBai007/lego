@@ -4,10 +4,12 @@
     <el-form :size="formConfig.form.size" :label-position="formConfig.form.labelPosition" :label-width="formConfig.form.labelWidth + 'px'">
       <!-- 可拖动区域 -->
       <drag-section class="drag-section" v-model="formConfig.list" group="common" chosenClass="active" animation="200">
-        <!-- 循环item -->
-        <div v-for="(item, i) in formConfig.list" :key="i" class="formItem" @click="selectOne(item, i)">
+        <!-- 循环item，并选择某个item -->
+        <div v-for="(item, i) in formConfig.list" :key="i" :class="[curItem.order == item.order ? 'chosen' : '', 'formItem']" @click="selectItem(item, i)">
           <!-- 构造每一个不同的表单元素 -->
           <form-item :item="item" />
+          <!-- 删除图标 -->
+          <i class="el-icon-delete" v-show="curItem.order == item.order" @click="deleteItem(item, i)"></i>
         </div>
       </drag-section>
     </el-form>
@@ -36,14 +38,27 @@ export default {
         list: [],
       },
       curIndex: "",
+      curItem: { name: "" },
     };
   },
   computed: {},
   mounted() {},
   methods: {
-    selectOne(item, i) {
+    selectItem(item, i) {
       this.curIndex = i;
+      this.curItem = item;
       this.$bus.$emit("setCurItem", item);
+    },
+    deleteItem(item, i) {
+      this.$confirm("确定是否删除当前控件?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+      })
+        .then(() => {
+          this.formConfig.list.splice(i, 1);
+        })
+        .catch(() => {});
     },
   },
   watch: {},
@@ -54,6 +69,21 @@ export default {
 .center-area {
   .drag-section {
     min-height: 200px;
+    .formItem {
+      position: relative;
+      cursor: pointer;
+      i.el-icon-delete {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        &:hover {
+          color: #f56c6c;
+        }
+      }
+    }
+    .chosen {
+      border: 1px dashed #888;
+    }
   }
 }
 </style>

@@ -24,7 +24,7 @@ export default {
         {
           name: "Container",
           type: "layout",
-          order: Date.now(),
+          order: 1,
           options: {
             layout: [24],
           },
@@ -32,7 +32,7 @@ export default {
         {
           name: "Input",
           type: "input",
-          order: Date.now(),
+          order: 2,
           options: {
             label: "标签",
             placeholder: "请输入",
@@ -41,7 +41,7 @@ export default {
         {
           name: "Button",
           type: "button",
-          order: Date.now(),
+          order: 3,
           options: {
             label: "按钮",
             icon: "",
@@ -56,7 +56,10 @@ export default {
   methods: {
     cloneCur(item) {
       // 重点二：必须返回一个全新的对象
-      return JSON.parse(JSON.stringify(item));
+      let item_copy = JSON.parse(JSON.stringify(item));
+      // 每次拖拽出来的order都不一样
+      item_copy.order = Date.now().toString(36);
+      return item_copy;
     },
   },
   watch: {},
