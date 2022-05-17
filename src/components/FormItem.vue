@@ -8,6 +8,10 @@
     <el-form-item v-if="item.type === 'input'" :label="item.options.label">
       <el-input :placeholder="item.options.placeholder"></el-input>
     </el-form-item>
+    <!-- 如果类型是容器 -->
+    <el-row v-if="item.type === 'layout'">
+      <el-col :span="col" v-for="(col, i) in item.options.cols.split(':')" :key="i">容器</el-col>
+    </el-row>
   </div>
 </template>
 

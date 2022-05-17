@@ -45,6 +45,7 @@ export default {
   .right {
     flex-grow: 1;
     padding: 20px;
+    overflow-y: auto;
   }
 }
 </style>

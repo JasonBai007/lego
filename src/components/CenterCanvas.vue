@@ -50,7 +50,7 @@ export default {
       this.$bus.$emit("setCurItem", item);
     },
     deleteItem(item, i) {
-      this.$confirm("确定是否删除当前控件?", "提示", {
+      this.$confirm("确定删除当前控件?", "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
         type: "warning",
@@ -67,11 +67,13 @@ export default {
 
 <style lang="scss" scoped>
 .center-area {
+  min-height: 100%;
   .drag-section {
-    min-height: 200px;
+    min-height: 500px;
     .formItem {
       position: relative;
       cursor: pointer;
+      padding: 10px;
       i.el-icon-delete {
         position: absolute;
         right: 10px;

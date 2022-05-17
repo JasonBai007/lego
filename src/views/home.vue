@@ -35,7 +35,7 @@ export default {
   }
   .right {
     width: 300px;
-    border-left: 1px solid #ccc;
+    border-left: 1px solid #ccc;    
   }
 }
 </style>

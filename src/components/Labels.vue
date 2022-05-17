@@ -26,7 +26,7 @@ export default {
           type: "layout",
           order: 1,
           options: {
-            layout: [24],
+            cols: "12:12",
           },
         },
         {

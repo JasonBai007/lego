@@ -12,6 +12,9 @@
           <el-form-item v-if="optsKey === 'icon'" label="图标">
             <el-input v-model="curItem.options.icon" clearable></el-input>
           </el-form-item>
+          <el-form-item v-if="optsKey === 'cols'" label="布局">
+            <el-input v-model="curItem.options.cols" clearable></el-input>
+          </el-form-item>
           <el-form-item v-if="optsKey === 'type'" label="类型">
             <el-radio-group v-model="curItem.options.type">
               <el-radio label="">normal</el-radio>
