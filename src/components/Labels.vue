@@ -72,15 +72,19 @@ export default {
     flex-wrap: wrap;
     li {
       box-sizing: border-box;
-      width: 120px;
-      height: 120px;
+      width: 80px;
+      height: 80px;
       flex-shrink: 0;
-      margin: 10px;
+      margin: 6px;
       display: flex;
       justify-content: center;
       align-items: center;
       border: 1px solid #aaa;
+      font-size: 13px;
+      transition: box-shadow 0.2s;
+      border-radius: 3px;
       &:hover {
+        box-shadow: 5px 5px 5px #ccc;
         border-color: #16a085;
         cursor: move;
       }
