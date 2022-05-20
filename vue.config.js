@@ -5,4 +5,5 @@ module.exports = defineConfig({
   },
   transpileDependencies: true,
   publicPath: "/lego/",
+  outputDir: "docs",
 });
