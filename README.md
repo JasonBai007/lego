@@ -38,4 +38,5 @@ npm run build
 ## Docs
 
 - [Vue.Draggable 使用文档总结](https://juejin.cn/post/6844904150350692366)
+- [Vue.Draggable 官方示例](https://sortablejs.github.io/Vue.Draggable/#/simple)
 - [vue 拖拽表单生成器](https://juejin.cn/post/7065863860669906952)

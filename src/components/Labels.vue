@@ -2,29 +2,30 @@
   <div class="labes">
     <!-- 配置项：自身不能排序，不能放置拖拽元素，拖拽时克隆 -->
     <!-- 重点一：必须:clone，不能是@clone -->
-    <drag-section tag="ul" v-model="labelList" :group="{ name: 'common', pull: 'clone', put: false }" :sort="false" :clone="cloneCur">
+    <draggable tag="ul" v-model="labelList" :group="{ name: 'common', pull: 'clone', put: false }" :sort="false" :clone="cloneCur">
       <li v-for="(label, i) in labelList" :key="i">
         {{ label.name }}
       </li>
-    </drag-section>
+    </draggable>
   </div>
 </template>
 
 <script>
-import DragSection from "vuedraggable";
+import draggable from "vuedraggable";
 const labels = ["Container", "Input", "Button"];
 export default {
   name: "labes",
   components: {
-    DragSection,
+    draggable,
   },
   data() {
     return {
       labelList: [
         {
           name: "Container",
-          type: "layout",
+          type: "container",
           order: 1,
+          children: [[], []],
           options: {
             cols: "12:12",
           },
