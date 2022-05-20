@@ -4,4 +4,5 @@ module.exports = defineConfig({
     host: "localhost",
   },
   transpileDependencies: true,
+  publicPath: "/lego/",
 });
