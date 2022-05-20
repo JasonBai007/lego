@@ -25,9 +25,12 @@ export default {
           name: "Container",
           type: "container",
           order: 1,
-          children: [[], []],
+          children: [[], [], []],
           options: {
-            cols: "12:12",
+            cols: "6:6:6",
+            gutter: 0,
+            justify: "center", //start/end/center/space-around/space-between
+            align: "middle", //top/middle/bottom
           },
         },
         {

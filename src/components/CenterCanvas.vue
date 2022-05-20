@@ -65,7 +65,8 @@ export default {
     "formConfig.list": {
       deep: true,
       handler: function (n, o) {
-        console.log(n);
+        console.log(JSON.stringify(n, null, 2));
+        if (n.length === 0) this.$bus.$emit("isEmpty", n.length === 0);
       },
     },
   },
@@ -80,11 +81,11 @@ export default {
     .formItem {
       position: relative;
       cursor: pointer;
-      padding: 10px;
+      padding: 5px;
       i.el-icon-delete {
         position: absolute;
-        right: 10px;
-        top: 10px;
+        right: 5px;
+        top: 5px;
         &:hover {
           color: #f56c6c;
         }
