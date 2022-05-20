@@ -4,6 +4,6 @@ module.exports = defineConfig({
     host: "localhost",
   },
   transpileDependencies: true,
-  publicPath: "/lego/",
+  publicPath: process.env.NODE_ENV === "production" ? "/lego/" : "/",
   outputDir: "docs",
 });
