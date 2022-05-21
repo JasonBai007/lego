@@ -23,7 +23,7 @@
             </el-radio-group>
           </el-form-item>
           <el-form-item v-if="optsKey === 'cols'" label="布局">
-            <el-input v-model="curItem.options.cols" clearable></el-input>
+            <el-input v-model="curItem.options.cols" clearable @change="setItemChildren"></el-input>
           </el-form-item>
           <el-form-item v-if="optsKey === 'gutter'" label="间距">
             <el-input v-model="curItem.options.gutter" clearable></el-input>
@@ -39,6 +39,7 @@
           </el-form-item>
           <el-form-item v-if="optsKey === 'align'" label="垂直对齐">
             <el-select v-model="curItem.options.align" style="width: 100%">
+              <el-option label="stretch" value="stretch"> </el-option>
               <el-option label="top" value="top"> </el-option>
               <el-option label="middle" value="middle"> </el-option>
               <el-option label="bottom" value="bottom"> </el-option>
@@ -73,7 +74,11 @@ export default {
       }
     });
   },
-  methods: {},
+  methods: {
+    setItemChildren(str) {
+      this.curItem.children = Array.from({ length: str.split(":").length }).map((u) => []);
+    },
+  },
   watch: {},
 };
 </script>

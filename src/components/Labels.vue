@@ -25,12 +25,12 @@ export default {
           name: "Container",
           type: "container",
           order: 1,
-          children: [[], []],
+          children: [[], []], // 和下方的cols一一对应
           options: {
             cols: "12:12",
             gutter: 0,
-            justify: "center", //start/end/center/space-around/space-between
-            align: "middle", //top/middle/bottom
+            justify: "center", // start/end/center/space-around/space-between
+            align: "stretch", // top/middle/bottom
           },
         },
         {
