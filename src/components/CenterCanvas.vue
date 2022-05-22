@@ -5,11 +5,11 @@
       <!-- 可拖动区域 -->
       <draggable class="drag-section" v-model="formConfig.list" group="common" chosenClass="active" animation="200">
         <!-- 循环item，并选择某个item -->
-        <div v-for="(item, i) in formConfig.list" :key="i" :class="[curItem.order == item.order ? 'chosen' : '', 'formItem']" @click="selectItem(item, i)">
+        <div v-for="(item, i) in formConfig.list" :key="i" :class="[curOrder == item.order ? 'chosen' : '', 'formItem']" @click="selectItem(item)">
           <!-- 构造每一个不同的表单元素 -->
-          <form-item :item="item" />
+          <form-item :item="item" ref="formItem" />
           <!-- 删除图标 -->
-          <i class="el-icon-delete" v-show="curItem.order == item.order" @click="deleteItem(item, i)"></i>
+          <i class="el-icon-delete" v-show="curOrder == item.order" @click="deleteItem(item, i)"></i>
         </div>
       </draggable>
     </el-form>
@@ -37,16 +37,17 @@ export default {
         // 拖拽区接收到的组件
         list: [],
       },
-      curIndex: "",
-      curItem: { name: "" },
     };
   },
-  computed: {},
+  computed: {
+    curOrder() {
+      return this.$store.state.curOrder;
+    },
+  },
   mounted() {},
   methods: {
-    selectItem(item, i) {
-      this.curIndex = i;
-      this.curItem = item;
+    selectItem(item) {
+      this.$store.commit("setCurOrder", item.order);
       this.$bus.$emit("setCurItem", item);
     },
     deleteItem(item, i) {
@@ -77,22 +78,24 @@ export default {
 .center-area {
   min-height: 100%;
   .drag-section {
-    min-height: 500px;
+    min-height: 200px;
     .formItem {
       position: relative;
       cursor: pointer;
       padding: 5px;
+      margin: 5px;
       i.el-icon-delete {
         position: absolute;
         right: 5px;
         top: 5px;
+        color: #34495e;
         &:hover {
           color: #f56c6c;
         }
       }
     }
     .chosen {
-      border: 1px dashed #888;
+      border: 2px dashed #16a085;
     }
   }
 }

@@ -12,7 +12,6 @@
 
 <script>
 import draggable from "vuedraggable";
-const labels = ["Container", "Input", "Button"];
 export default {
   name: "labes",
   components: {
@@ -30,7 +29,7 @@ export default {
             cols: "12:12",
             gutter: 0,
             justify: "center", // start/end/center/space-around/space-between
-            align: "stretch", // top/middle/bottom
+            align: "stretch", // stretch/top/middle/bottom
           },
         },
         {
@@ -86,7 +85,7 @@ export default {
       display: flex;
       justify-content: center;
       align-items: center;
-      border: 1px solid #aaa;
+      border: 2px solid #bdc3c7;
       font-size: 13px;
       transition: box-shadow 0.2s;
       border-radius: 3px;

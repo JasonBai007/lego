@@ -1,9 +1,7 @@
 <template>
   <div class="oneItem">
     <!-- 如果类型是按钮 -->
-    <el-form-item v-if="item.type === 'button'">
-      <el-button :type="item.options.type" :icon="item.options.icon">{{ item.options.label }}</el-button>
-    </el-form-item>
+    <el-button v-if="item.type === 'button'" :type="item.options.type" :icon="item.options.icon" size="small">{{ item.options.label }}</el-button>
 
     <!-- 如果类型是输入框 -->
     <el-form-item v-if="item.type === 'input'" :label="item.options.label">
@@ -19,11 +17,11 @@
           <!-- 递归判断条件，如果容器里没有元素，就不用继续递归了！！！ -->
           <template v-if="item.children[i].length > 0">
             <!-- 循环容器内部某个col里的组件，并绑定单击事件，还要阻止冒泡到上一级 -->
-            <div v-for="(child, j) in item.children[i]" :key="j" @click.stop="selectInnerItem(child)" :class="[curInnerItem.order == child.order ? 'chosen' : '', 'formItem']">
+            <div v-for="(child, j) in item.children[i]" :key="j" @click.stop="selectInnerItem(child)" :class="[curInnerOrder == child.order ? 'chosen' : '', 'formItem']">
               <!-- 又TM渲染一遍当前的组件，因为里面可能只有一个按钮，所以，内层渲染的时候只走上面的button分支 -->
               <form-item :item="child"></form-item>
               <!-- 删除图标，删除的时候传入当前父级item，i,j -->
-              <i class="el-icon-delete" v-show="curInnerItem.order == child.order" @click="deleteInnerItem(item, i, j)"></i>
+              <i class="el-icon-delete" v-show="curInnerOrder == child.order" @click="deleteInnerItem(item, i, j)"></i>
             </div>
           </template>
         </draggable>
@@ -41,15 +39,17 @@ export default {
     draggable,
   },
   data() {
-    return {
-      curInnerItem: {},
-    };
+    return {};
   },
-  computed: {},
+  computed: {
+    curInnerOrder() {
+      return this.$store.state.curOrder;
+    },
+  },
   mounted() {},
   methods: {
     selectInnerItem(child) {
-      this.curInnerItem = child;
+      this.$store.commit("setCurOrder", child.order);
       this.$bus.$emit("setCurItem", child);
     },
     deleteInnerItem(item, i, j) {
@@ -80,6 +80,7 @@ export default {
           position: relative;
           cursor: pointer;
           padding: 5px;
+          margin: 5px;
           i.el-icon-delete {
             position: absolute;
             right: 5px;
@@ -90,7 +91,7 @@ export default {
           }
         }
         .chosen {
-          border: 1px dashed #888;
+          border: 2px dashed #16a085;
         }
       }
     }
