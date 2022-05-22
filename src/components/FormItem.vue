@@ -60,6 +60,7 @@ export default {
       })
         .then(() => {
           item.children[i].splice(j, 1);
+          this.$store.commit("setCurId", '');
         })
         .catch(() => {});
     },

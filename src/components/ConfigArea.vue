@@ -59,22 +59,19 @@ export default {
   name: "configArea",
   data() {
     return {
-      isEmpty: false,
       curItem: {},
     };
   },
-  computed: {},
+  computed: {
+    isEmpty() {
+      if (this.$store.getters.isEmpty) this.curItem = {};
+      return this.$store.getters.isEmpty;
+    },
+  },
   mounted() {
     this.$bus.$on("setCurItem", (item) => {
       // 这里传递的实际上是引用，是指针，牵线搭桥
       this.curItem = item;
-    });
-    this.$bus.$on("isEmpty", (status) => {
-      // 如果中间区域没有组件了，就清空配置板块
-      this.isEmpty = status;
-      if (status) {
-        this.curItem = {};
-      }
     });
   },
   methods: {

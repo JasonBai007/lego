@@ -58,6 +58,7 @@ export default {
       })
         .then(() => {
           this.formConfig.list.splice(i, 1);
+          this.$store.commit("setCurId", "");
         })
         .catch(() => {});
     },
@@ -67,7 +68,6 @@ export default {
       deep: true,
       handler: function (n, o) {
         console.log(JSON.stringify(n, null, 2));
-        if (n.length === 0) this.$bus.$emit("isEmpty", n.length === 0);
       },
     },
   },
