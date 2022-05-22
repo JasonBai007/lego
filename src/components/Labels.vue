@@ -90,6 +90,7 @@ export default {
       font-size: 13px;
       transition: box-shadow 0.2s;
       border-radius: 3px;
+      user-select: none;
       &:hover {
         box-shadow: 5px 5px 5px #ccc;
         border-color: #16a085;
