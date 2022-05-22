@@ -28,6 +28,12 @@ npm run serve
 npm run build
 ```
 
+### Deploy for Github Pages
+
+```
+npm run deploy
+```
+
 ## 思路
 
 1. 左侧：由 vuedraggable（不可自己内部拖拽排序） 包裹的一些常用组件，每个组件是一个对象，内有类型、配置项
