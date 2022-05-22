@@ -28,6 +28,9 @@
           <el-form-item v-if="optsKey === 'gutter'" label="间距">
             <el-input v-model="curItem.options.gutter" clearable></el-input>
           </el-form-item>
+          <el-form-item v-if="optsKey === 'isCenter'" label="内容居中">
+            <el-switch v-model="curItem.options.isCenter" active-color="#42bc9c" inactive-color="#bec3c7"> </el-switch>
+          </el-form-item>
           <el-form-item v-if="optsKey === 'justify'" label="水平对齐">
             <el-select v-model="curItem.options.justify" style="width: 100%">
               <el-option label="start" value="start"> </el-option>

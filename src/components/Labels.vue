@@ -30,6 +30,7 @@ export default {
             gutter: 0,
             justify: "center", // start/end/center/space-around/space-between
             align: "stretch", // stretch/top/middle/bottom
+            isCenter: false, // 内容是否居中
           },
         },
         {

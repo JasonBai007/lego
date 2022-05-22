@@ -1,5 +1,5 @@
 <template>
-  <div class="oneItem">
+  <span class="oneItem">
     <!-- 如果类型是按钮 -->
     <el-button v-if="item.type === 'button'" :type="item.options.type" :icon="item.options.icon" size="small">{{ item.options.label }}</el-button>
 
@@ -12,8 +12,8 @@
     <el-row v-if="item.type === 'container'" type="flex" :align="item.options.align" :justify="item.options.justify" :gutter="item.options.gutter">
       <!-- 构建容器的每一个col -->
       <el-col :span="Number(col)" v-for="(col, i) in item.options.cols.split(':')" :key="i">
-        <!-- 绑定children对应的数组数据 -->
-        <draggable v-model="item.children[i]" group="common" animation="200" class="inner">
+        <!-- 绑定children对应的数组数据，并且控制内容是否居中 -->
+        <draggable v-model="item.children[i]" group="common" animation="200" :class="[item.options.isCenter ? 'center' : '', 'inner']">
           <!-- 递归判断条件，如果容器里没有元素，就不用继续递归了！！！ -->
           <template v-if="item.children[i].length > 0">
             <!-- 循环容器内部某个col里的组件，并绑定单击事件，还要阻止冒泡到上一级 -->
@@ -27,7 +27,7 @@
         </draggable>
       </el-col>
     </el-row>
-  </div>
+  </span>
 </template>
 
 <script>
@@ -76,6 +76,10 @@ export default {
       border: 1px dashed #aaa;
       .inner {
         min-height: 40px;
+        &.center {
+          display: flex;
+          justify-content: center;
+        }
         .formItem {
           position: relative;
           cursor: pointer;
