@@ -1,8 +1,12 @@
 # lego
 
-乐高表单拖拽生成器
+可拖拽页面生成器原型
 
-## Tech Stock
+## Preview
+
+[https://jasonbai007.github.io/lego](https://jasonbai007.github.io/lego)
+
+## Tech Stack
 
 1. vue 2.x
 2. vue-router
