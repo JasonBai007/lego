@@ -64,7 +64,6 @@ export default {
   },
   computed: {
     isEmpty() {
-      if (this.$store.getters.isEmpty) this.curItem = {};
       return this.$store.getters.isEmpty;
     },
   },
@@ -79,7 +78,12 @@ export default {
       this.curItem.children = Array.from({ length: str.split(":").length }).map((u) => []);
     },
   },
-  watch: {},
+  watch: {
+    isEmpty(n, o) {
+      // 这里必须使用，要不然不管用
+      if (n) this.curItem = {};
+    },
+  },
 };
 </script>
 
