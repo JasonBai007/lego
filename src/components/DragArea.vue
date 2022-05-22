@@ -32,6 +32,7 @@ export default {
 <style lang="scss" scoped>
 .drag-area {
   display: flex;
+  flex-wrap: wrap;
   height: 100%;
   & > div {
     background: #fff;
@@ -46,6 +47,22 @@ export default {
     flex-grow: 1;
     padding: 20px;
     overflow-y: auto;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .drag-area {
+    align-content: flex-start;
+    .left {
+      width: 100%;
+      margin-right: 0;
+      margin-bottom: 15px;
+      display: flex;
+      justify-content: center;
+    }
+    .right {
+      height: calc(100% - 180px);
+    }
   }
 }
 </style>

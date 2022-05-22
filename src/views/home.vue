@@ -24,6 +24,7 @@ export default {
 <style lang="scss" scoped>
 .home {
   display: flex;
+  flex-wrap: wrap;
   & > section {
     box-sizing: border-box;
     height: 100vh;
@@ -35,7 +36,16 @@ export default {
   }
   .right {
     width: 300px;
-    border-left: 1px solid #ccc;    
+    border-left: 1px solid #ccc;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .home {
+    .right {
+      width: 0;
+      padding: 0;
+    }
   }
 }
 </style>
