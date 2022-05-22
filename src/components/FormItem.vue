@@ -17,11 +17,11 @@
           <!-- 递归判断条件，如果容器里没有元素，就不用继续递归了！！！ -->
           <template v-if="item.children[i].length > 0">
             <!-- 循环容器内部某个col里的组件，并绑定单击事件，还要阻止冒泡到上一级 -->
-            <div v-for="(child, j) in item.children[i]" :key="j" @click.stop="selectInnerItem(child)" :class="[curInnerOrder == child.order ? 'chosen' : '', 'formItem']">
+            <div v-for="(child, j) in item.children[i]" :key="j" @click.stop="selectInnerItem(child)" :class="[curInnerId == child.id ? 'chosen' : '', 'formItem']">
               <!-- 又TM渲染一遍当前的组件，因为里面可能只有一个按钮，所以，内层渲染的时候只走上面的button分支 -->
               <form-item :item="child"></form-item>
               <!-- 删除图标，删除的时候传入当前父级item，i,j -->
-              <i class="el-icon-delete" v-show="curInnerOrder == child.order" @click="deleteInnerItem(item, i, j)"></i>
+              <i class="el-icon-delete" v-show="curInnerId == child.id" @click="deleteInnerItem(item, i, j)"></i>
             </div>
           </template>
         </draggable>
@@ -42,14 +42,14 @@ export default {
     return {};
   },
   computed: {
-    curInnerOrder() {
-      return this.$store.state.curOrder;
+    curInnerId() {
+      return this.$store.state.curId;
     },
   },
   mounted() {},
   methods: {
     selectInnerItem(child) {
-      this.$store.commit("setCurOrder", child.order);
+      this.$store.commit("setCurId", child.id);
       this.$bus.$emit("setCurItem", child);
     },
     deleteInnerItem(item, i, j) {

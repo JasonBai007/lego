@@ -5,12 +5,12 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    curOrder: "",
+    curId: "",
   },
   getters: {},
   mutations: {
-    setCurOrder(state, str) {
-      state.curOrder = str;
+    setCurId(state, str) {
+      state.curId = str;
     },
   },
   actions: {},

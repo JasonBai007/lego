@@ -5,11 +5,11 @@
       <!-- 可拖动区域 -->
       <draggable class="drag-section" v-model="formConfig.list" group="common" chosenClass="active" animation="200">
         <!-- 循环item，并选择某个item -->
-        <div v-for="(item, i) in formConfig.list" :key="i" :class="[curOrder == item.order ? 'chosen' : '', 'formItem']" @click="selectItem(item)">
+        <div v-for="(item, i) in formConfig.list" :key="i" :class="[curId == item.id ? 'chosen' : '', 'formItem']" @click="selectItem(item)">
           <!-- 构造每一个不同的表单元素 -->
           <form-item :item="item" ref="formItem" />
           <!-- 删除图标 -->
-          <i class="el-icon-delete" v-show="curOrder == item.order" @click="deleteItem(item, i)"></i>
+          <i class="el-icon-delete" v-show="curId == item.id" @click="deleteItem(item, i)"></i>
         </div>
       </draggable>
     </el-form>
@@ -40,14 +40,14 @@ export default {
     };
   },
   computed: {
-    curOrder() {
-      return this.$store.state.curOrder;
+    curId() {
+      return this.$store.state.curId;
     },
   },
   mounted() {},
   methods: {
     selectItem(item) {
-      this.$store.commit("setCurOrder", item.order);
+      this.$store.commit("setCurId", item.id);
       this.$bus.$emit("setCurItem", item);
     },
     deleteItem(item, i) {

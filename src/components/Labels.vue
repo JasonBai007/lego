@@ -23,7 +23,7 @@ export default {
         {
           name: "Container",
           type: "container",
-          order: 1,
+          id: 1,
           children: [[], []], // 和下方的cols一一对应
           options: {
             cols: "12:12",
@@ -35,7 +35,7 @@ export default {
         {
           name: "Input",
           type: "input",
-          order: 2,
+          id: 2,
           options: {
             label: "标签",
             placeholder: "请输入",
@@ -44,7 +44,7 @@ export default {
         {
           name: "Button",
           type: "button",
-          order: 3,
+          id: 3,
           options: {
             label: "按钮",
             icon: "",
@@ -60,8 +60,8 @@ export default {
     cloneCur(item) {
       // 重点二：必须返回一个全新的对象
       let item_copy = JSON.parse(JSON.stringify(item));
-      // 每次拖拽出来的order都不一样
-      item_copy.order = Date.now().toString(36);
+      // 每次拖拽出来的id都不一样
+      item_copy.id = Date.now().toString(36);
       return item_copy;
     },
   },
